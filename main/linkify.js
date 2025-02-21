@@ -12,7 +12,7 @@ function linkify(text) {
                 
                 // Проверка на формат "preview"
                 if (hyperlink.includes('/preview')) {
-                    return `<iframe src="https://drive.google.com/file/d/${fileId}/preview" width="640" height="480" allow="autoplay"></iframe>`;
+                    return `<iframe src="https://drive.google.com/file/d/${fileId}/preview" width="500" height="700" allow="autoplay"></iframe>`;
                 }
 
                 // Прямая ссылка для аудио/видео/изображений
