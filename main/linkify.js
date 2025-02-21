@@ -12,7 +12,15 @@ function linkify(text) {
                 
                 // Проверка на формат "preview"
                 if (hyperlink.includes('/preview')) {
-                    return `<iframe src="https://drive.google.com/file/d/${fileId}/preview" width="500" height="700" allow="autoplay"></iframe>`;
+                    return `
+                        <div style="position: relative; max-width: 640px; text-align: center; margin: auto;">
+                            <iframe id="gdrive-${fileId}" src="https://drive.google.com/file/d/${fileId}/preview" 
+                                    width="640" height="480" allow="autoplay" allowfullscreen style="display: block; margin: 0 auto;"></iframe>
+                            <button onclick="openFullScreen('gdrive-${fileId}')"
+                                    style="margin-top: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                                Полный экран
+                            </button>
+                        </div>`;
                 }
 
                 // Прямая ссылка для аудио/видео/изображений
@@ -36,7 +44,6 @@ function linkify(text) {
                     return `<img src="${directLink}" alt="Image" style="max-width:100%; height:auto;">`;
                 }
 
-                // Если неизвестный формат — просто ссылка
                 return `<a href="${directLink}" target="_blank" rel="noopener noreferrer">Скачать файл с Google Диска</a>`;
             }
 
@@ -96,4 +103,18 @@ function linkify(text) {
         .replace(/`(.+?)`/g, '<code>$1</code>')
         // Переносы строк
         .replace(/\n/g, '<br>');
+}
+
+// === Функция для открытия полного экрана ===
+function openFullScreen(elementId) {
+    const iframe = document.getElementById(elementId);
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari и Opera
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+    }
 }
