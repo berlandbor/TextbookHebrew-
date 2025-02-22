@@ -16,7 +16,7 @@ function linkify(text) {
                         <div style="position: relative; max-width: 640px; text-align: center; margin: auto;">
                             <iframe id="gdrive-${fileId}" src="https://drive.google.com/file/d/${fileId}/preview" 
                                     width="640" height="480" allow="autoplay" allowfullscreen style="display: block; margin: 0 auto;"></iframe>
-                            <button onclick="openFullScreen('gdrive-${fileId}')"                         style="margin-top: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                            <button onclick="openFullScreen('gdrive-${fileId}')"style="margin-top: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer; font-size: 16px;">
                                 Полный экран
                             </button>
                         </div>`;
